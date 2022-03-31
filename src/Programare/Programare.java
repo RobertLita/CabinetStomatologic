@@ -6,7 +6,7 @@ import java.util.Calendar;
 
 public class Programare implements Comparable<Programare>{
     private Calendar data;
-    String subiect;
+    private String subiect;
     private Pacient pacient;
     public Programare() {}
     public Programare(int zi, int luna, int an, int ora, int minut, Pacient pacient, String subiect) {
