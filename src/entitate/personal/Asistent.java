@@ -1,4 +1,4 @@
-package Personal;
+package entitate.personal;
 
 public class Asistent extends Persoana{
     private double salariu;

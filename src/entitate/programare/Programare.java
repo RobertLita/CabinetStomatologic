@@ -1,6 +1,6 @@
-package Programare;
+package entitate.programare;
 
-import Personal.Pacient;
+import entitate.personal.Pacient;
 import java.util.Calendar;
 
 

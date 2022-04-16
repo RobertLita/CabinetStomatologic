@@ -1,16 +1,17 @@
-package Personal;
+package entitate.personal;
 
-import Programare.Programare;
+import entitate.programare.Programare;
 
 import java.util.Calendar;
 import java.util.PriorityQueue;
+import java.util.Queue;
 
 
 public class Doctor extends Persoana{
     private double salariu, nota;
     private int nrPacienti;
     private Asistent asistent;
-    PriorityQueue<Programare> programari;
+    private Queue<Programare> programari;
 
     public Doctor() {}
     public Doctor(String nume, String prenume, String cnp) {
@@ -99,7 +100,7 @@ public class Doctor extends Persoana{
         this.nrPacienti = nrPacienti;
     }
 
-    public PriorityQueue<Programare> getProgramari() {
+    public Queue<Programare> getProgramari() {
         return programari;
     }
 

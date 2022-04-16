@@ -1,8 +1,8 @@
-package Personal;
+package entitate.personal;
 
-import Programare.Diagnostic;
-import Programare.Programare;
-import Programare.Tratament;
+import entitate.programare.Diagnostic;
+import entitate.programare.Programare;
+import entitate.programare.Tratament;
 
 
 public class Pacient extends Persoana{

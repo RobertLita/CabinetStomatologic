@@ -1,4 +1,4 @@
-package Personal;
+package entitate.personal;
 
 public class Persoana implements Comparable<Persoana>{
     protected String nume, prenume, cnp;

@@ -1,16 +1,18 @@
-package Cabinet;
+package entitate.cabinet;
 
-import Comparatori.NrPacientiComparator;
-import Comparatori.NotaComparator;
-import Personal.*;
+import comparatori.NrPacientiComparator;
+import comparatori.NotaComparator;
+import entitate.personal.*;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class Cabinet {
-    private ArrayList<Doctor> doctori;
-    private ArrayList<Asistent> asistenti;
-    HashMap<String, Integer> stoc;
+    private List<Doctor> doctori;
+    private List<Asistent> asistenti;
+    private Map<String, Integer> stoc;
     public Cabinet() {
         this.stoc = new HashMap<>();
         this.doctori = new ArrayList<>();
@@ -126,7 +128,7 @@ public class Cabinet {
         }
     }
 
-    public ArrayList<Doctor> getDoctori() {
+    public List<Doctor> getDoctori() {
         return doctori;
     }
 
@@ -134,7 +136,7 @@ public class Cabinet {
         this.doctori = doctori;
     }
 
-    public ArrayList<Asistent> getAsistenti() {
+    public List<Asistent> getAsistenti() {
         return asistenti;
     }
 

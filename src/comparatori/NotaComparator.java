@@ -1,6 +1,6 @@
-package Comparatori;
+package comparatori;
 
-import Personal.Doctor;
+import entitate.personal.Doctor;
 
 import java.util.Comparator;
 

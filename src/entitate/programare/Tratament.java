@@ -1,4 +1,4 @@
-package Programare;
+package entitate.programare;
 
 public class Tratament {
     private String nume, recomandari;
