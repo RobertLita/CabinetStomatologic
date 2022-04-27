@@ -5,7 +5,8 @@ import entitate.personal.Pacient;
 import entitate.programare.Diagnostic;
 import entitate.programare.Tratament;
 import service.CabinetService;
-import service.PersonalService;
+import service.DoctorService;
+import service.PacientService;
 
 
 public class Main {
@@ -22,7 +23,8 @@ public class Main {
         Cabinet C = new Cabinet();
 
         CabinetService CService = new CabinetService();
-        PersonalService PService = new PersonalService();
+        DoctorService DService = new DoctorService();
+        PacientService PService = new PacientService();
 
         //adaug doctori in cabinet
         CService.adaugaPersonal(C, D1);
@@ -54,7 +56,7 @@ public class Main {
         CService.adaugaMateriale(C, "material plomba", 40);
 
         //sterg materiale de pe stoc
-        CService.eliminaMateriale(C,"sarma", 1);
+        CService.scadeMateriale(C,"sarma", 1);
 
         //afisez stocul de materiale
         CService.afiseazaStoc(C);
@@ -64,20 +66,21 @@ public class Main {
         System.out.println();
 
         //adaug primele programari pentru P1 si P2
-        PService.adaugaPrimaProgramare(D1, P1,28, 3, 2022, 12, 0, "detartraj");
-        PService.adaugaPrimaProgramare(D2, P2, 16, 3, 2022, 10, 30, "carie molar");
-        PService.adaugaPrimaProgramare(D2, P3, 31, 4, 2022, 14, 30, "carie premolar");
+        DService.adaugaPrimaProgramare(D1, P1,28, 3, 2022, 12, 0, "detartraj");
+        DService.adaugaPrimaProgramare(D2, P2, 27, 4, 2022, 10, 30, "carie molar");
+        DService.adaugaPrimaProgramare(D2, P3, 27, 4, 2022, 12, 30, "extractie");
+        DService.adaugaPrimaProgramare(D2, P3, 4, 5, 2022, 14, 30, "carie premolar");
 
-        PService.afiseazaProgramari(D1);
+        DService.afiseazaProgramari(D1);
         //pacientul P1 vine la cabinet, iar la sfarsit, doctorul adauga urmatoarea lui programare, peste 3 zile la aceeasi ora, apoi elimina programarea curenta
-        PService.adaugaUrmProgramare(D1, "periaj", 3);
-        PService.eliminaProgramare(D1);
+        DService.adaugaUrmProgramare(D1, "periaj", 3);
+        DService.eliminaProgramare(D1);
 
         //afisez programarile lui D1 si programarile de azi ale lui D2
-        PService.afiseazaProgramari(D1);
+        DService.afiseazaProgramari(D1);
         System.out.println();
 
-        PService.afiseazaProgramariAzi(D2);
+        DService.afiseazaProgramariAzi(D2);
         System.out.println();
 
         //afisez programarea viitoare a lui P1
@@ -105,7 +108,7 @@ public class Main {
         PService.afiseazaTotalPlata(P2);
 
         //modific si afisez salariul unui doctor
-        CService.modificaSalarius(C, D1, 100);
+        CService.modificaSalarius(C, D1, 1500);
         CService.afiseazaSalariu(C, D1);
 
     }

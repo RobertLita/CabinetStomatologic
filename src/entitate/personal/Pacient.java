@@ -4,6 +4,8 @@ import entitate.programare.Diagnostic;
 import entitate.programare.Programare;
 import entitate.programare.Tratament;
 
+import java.util.Objects;
+
 
 public class Pacient extends Persoana{
     private Diagnostic diagnostic;
@@ -22,14 +24,6 @@ public class Pacient extends Persoana{
         this.diagnostic = diagnostic;
         this.tratament = tratament;
         this.totalPlata = tratament.getCost();
-    }
-
-    public void oferaNota(double nota) {
-        int nrPacienti = this.doctor.getNrPacienti() + 1;
-        this.doctor.setNrPacienti(nrPacienti);
-        double n = this.doctor.getNota();
-        n = (n + nota) / nrPacienti;
-        this.doctor.setNota(n);
     }
 
     public Doctor getDoctor() {
@@ -73,35 +67,21 @@ public class Pacient extends Persoana{
         this.totalPlata = totalPlata;
     }
 
-    public void afiseazaProgramare() {
-        if(this.programare == null){
-            System.out.println("Pacientul nu are nicio programare.");
-            return;
-        }
-        System.out.println(this.programare);
-    }
-
-    public void afiseazaRecomandari() {
-        if(this.tratament == null) {
-            System.out.println("Pacientul nu are niciun tratament.");
-            return;
-        }
-        if(this.tratament.getRecomandari().equals("")){
-            System.out.println("Pacientul nu are nicio recomandare");
-            return;
-        }
-        System.out.println("Pentru " + this.getNumeComplet() + ", recomandarea este sa " + this.tratament.getRecomandari());
-    }
-    public void afiseazaTotalPlata() {
-        if(this.totalPlata == 0) {
-            System.out.println("Pacientul " + this.getNumeComplet() + " nu are nimic de platit.");
-            return;
-        }
-        System.out.println("Pacientul " + this.getNumeComplet() + " are de platit " + this.totalPlata + " de lei.");
-    }
-
     @Override
     public String toString() {
         return "Pacientul " + this.getNumeComplet() + "a fost diagnosticat cu " + this.diagnostic + " si urmeaza tratamentul " + this.tratament;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Pacient pacient = (Pacient) o;
+        return totalPlata == pacient.totalPlata && diagnostic.equals(pacient.diagnostic) && tratament.equals(pacient.tratament) && programare.equals(pacient.programare) && doctor.equals(pacient.doctor);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(diagnostic, tratament, programare, doctor, totalPlata);
     }
 }
