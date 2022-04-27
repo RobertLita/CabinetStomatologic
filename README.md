@@ -1,6 +1,6 @@
 ## Cabinet Stomatologic
 
-- ### Etapa 1 (29 martie)
+- ### Etapa 1 (1 aprilie)
 
 1. Definirea sistemului:
     - [x] Să se creeze o lista pe baza temei alese cu cel puțin 10 acțiuni/interogări care
