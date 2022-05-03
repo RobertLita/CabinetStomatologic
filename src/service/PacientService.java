@@ -2,6 +2,7 @@ package service;
 
 import entitate.personal.Doctor;
 import entitate.personal.Pacient;
+import entitate.programare.Diagnostic;
 import entitate.programare.Programare;
 import entitate.programare.Tratament;
 
@@ -15,6 +16,7 @@ public class PacientService implements IPacientService{
             return;
         }
         System.out.println("Pacientul " + pacient.getNumeComplet() + " are de platit " + totalPlata + " de lei.");
+        audit.scrieAudit("afiseazaTotalPlata");
     }
 
     @Override
@@ -25,6 +27,7 @@ public class PacientService implements IPacientService{
             return;
         }
         System.out.println(programare);
+        audit.scrieAudit("afiseazaProgramare");
     }
 
     @Override
@@ -39,6 +42,7 @@ public class PacientService implements IPacientService{
             return;
         }
         System.out.println("Pentru " + pacient.getNumeComplet() + ", recomandarea este sa " + tratament.getRecomandari());
+        audit.scrieAudit("afiseazaRecomandari");
     }
 
     @Override
@@ -49,5 +53,24 @@ public class PacientService implements IPacientService{
         double n = doctor.getNota();
         n = (n + nota) / nrPacienti;
         doctor.setNota(n);
+        audit.scrieAudit("oferaNota");
+    }
+
+    @Override
+    public void adaugaDoctor(Pacient pacient, Doctor doctor) {
+        pacient.setDoctor(doctor);
+        audit.scrieAudit("adaugaDoctor");
+    }
+
+    @Override
+    public void adaugaDiagnostic(Pacient pacient, Diagnostic diagnostic) {
+        pacient.setDiagnostic(diagnostic);
+        audit.scrieAudit("adaugaDiagnostic");
+    }
+
+    @Override
+    public void adaugaTratament(Pacient pacient, Tratament tratament) {
+        pacient.setTratament(tratament);
+        audit.scrieAudit("adaugaTratament");
     }
 }

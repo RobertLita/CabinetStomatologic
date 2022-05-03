@@ -18,6 +18,7 @@ public class DoctorService implements IDoctorService {
             return;
         }
         System.out.println(programari.peek());
+        audit.scrieAudit("afiseazaProgramare");
     }
 
     @Override
@@ -26,12 +27,14 @@ public class DoctorService implements IDoctorService {
         for(Programare p : programari) {
             System.out.println(p);
         }
+        audit.scrieAudit("afiseazaProgramari");
     }
 
     @Override
     public void eliminaProgramare(Doctor doctor) {
         Queue<Programare> programari = doctor.getProgramari();
         programari.remove();
+        audit.scrieAudit("eliminaProgramare");
     }
 
     @Override
@@ -43,6 +46,7 @@ public class DoctorService implements IDoctorService {
                 break;
             System.out.println(p);
         }
+        audit.scrieAudit("afiseazaProgramariAzi");
     }
 
     @Override
@@ -51,6 +55,7 @@ public class DoctorService implements IDoctorService {
         Queue<Programare> programari = doctor.getProgramari();
         programari.add(programareNoua);
         pacient.setProgramare(programareNoua);
+        audit.scrieAudit("adaugaPrimaProgramare");
     }
 
     @Override
@@ -69,6 +74,6 @@ public class DoctorService implements IDoctorService {
         programareNoua.setPacient(p);
         p.setProgramare(programareNoua);
         programari.add(programareNoua);
+        audit.scrieAudit("adaugaUrmProgramare");
     }
-
 }
