@@ -138,6 +138,6 @@ public class Main {
 
         Doctor DNou = new Doctor("Mugur","Dorian", "09090909");
         WriteCSVService out = WriteCSVService.getInstance();
-        out.scrieCSV(DNou, "data/doctori.csv");
+        out.scrieCSV(DNou, "data/output.csv");
     }
 }

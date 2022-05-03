@@ -26,25 +26,25 @@ public class WriteCSVService {
 
     public <T> void scrieCSV(T object, String path) {
         try (BufferedWriter out = new BufferedWriter(new FileWriter(path, true))) {
-            String line = "\n";
+            String line = "";
             if(object instanceof Doctor) {
                 Doctor d = (Doctor) object;
-                line += d.getNume() + ", " + d.getPrenume() + ", " + d.getCnp() + ", " + d.getNrPacienti() + ", " +d.getSalariu();
+                line += d.getNume() + ", " + d.getPrenume() + ", " + d.getCnp() + ", " + d.getNrPacienti() + ", " +d.getSalariu() + '\n';
                 out.write(line);
             }
             else if(object instanceof Asistent) {
                 Asistent a = (Asistent) object;
-                line += a.getNume() + ", " + a.getPrenume() + ", " + a.getCnp() + ", " + a.getSalariu();
+                line += a.getNume() + ", " + a.getPrenume() + ", " + a.getCnp() + ", " + a.getSalariu() + '\n';
                 out.write(line);
             }
             else if(object instanceof Pacient) {
                 Pacient p = (Pacient) object;
-                line += p.getNume() + ", " + p.getPrenume() + ", " + p.getCnp() + ", " + p.getTotalPlata();
+                line += p.getNume() + ", " + p.getPrenume() + ", " + p.getCnp() + ", " + p.getTotalPlata() + '\n';
                 out.write(line);
             }
             else if(object instanceof Tratament) {
                 Tratament t = (Tratament) object;
-                line += t.getNume() + ", " + t.getDurata() + ", " + t.getCost() + ", " + t.getRecomandari();
+                line += t.getNume() + ", " + t.getDurata() + ", " + t.getCost() + ", " + t.getRecomandari() + '\n';
                 out.write(line);
             }
             else throw new WrongObjectType("Obiectul dat nu poate fi scris in fisier.");
