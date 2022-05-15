@@ -69,7 +69,7 @@ public class Pacient extends Persoana{
 
     @Override
     public String toString() {
-        return "Pacientul " + this.getNumeComplet() + "a fost diagnosticat cu " + this.diagnostic + " si urmeaza tratamentul " + this.tratament;
+        return "Pacientul " + this.getNumeComplet() + " a fost diagnosticat cu " + this.diagnostic + " si urmeaza tratamentul " + this.tratament;
     }
 
     @Override

@@ -4,20 +4,30 @@ import entitate.personal.Doctor;
 import entitate.personal.Pacient;
 import entitate.programare.Diagnostic;
 import entitate.programare.Tratament;
+import io.ReadCSVService;
+import io.WriteCSVService;
 import service.CabinetService;
 import service.DoctorService;
 import service.PacientService;
+
+import java.util.List;
 
 
 public class Main {
     public static void main(String[] args) {
         //doctori
-        Doctor D1 = new Doctor("Popescu", "Mihnea", "05111"), D2 = new Doctor("Vasile", "Vlad", "0222"),
-                D3 = new Doctor("Anton", "Ioana", "222");
+//        Doctor D1 = new Doctor("Popescu", "Mihne0a", "05111"), D2 = new Doctor("Vasile", "Vlad", "0222"),
+//                D3 = new Doctor("Anton", "Ioana", "222");
+        ReadCSVService in = ReadCSVService.getInstance();
+        List<Doctor> doctori = in.citesteCSV("data/doctori.csv", "Doctor");
+        Doctor D1 = doctori.get(0), D2 = doctori.get(1), D3 = doctori.get(2);
 
         //asistenti
-        Asistent A1 = new Asistent("Toma", "Octavian", "0123"), A2 = new Asistent("Ionescu", "Maria", "111"),
-                A3 = new Asistent("Grigore", "Laura", "02432123");
+//        Asistent A1 = new Asistent("Toma", "Octavian", "0123"), A2 = new Asistent("Ionescu", "Maria", "111"),
+//                A3 = new Asistent("Grigore", "Laura", "02432123");
+
+        List<Asistent> asistenti = in.citesteCSV("data/asistenti.csv", "Asistent");
+        Asistent A1 = asistenti.get(0), A2 = asistenti.get(1), A3 = asistenti.get(2);
 
         //Cabinet
         Cabinet C = new Cabinet();
@@ -38,15 +48,30 @@ public class Main {
 
 
         //diagnostic
-        Diagnostic Di1 = new Diagnostic("halitoza"), Di2 = new Diagnostic("carie");
+//        Diagnostic Di1 = new Diagnostic("halitoza"), Di2 = new Diagnostic("carie");
+        List<Diagnostic> diagnostice = in.citesteCSV("data/diagnostice.csv", "Diagnostic");
+        Diagnostic Di1 = diagnostice.get(0), Di2 = diagnostice.get(1), Di3 = diagnostice.get(2);
 
         //tratament
-        Tratament T1 = new Tratament("plombarea molarului afectat", 30, 100, "nu consumati alimente reci"),
-                T2 = new Tratament("detartraj", 25, 95, "nu consumati alimente reci");
+//        Tratament T1 = new Tratament("plombarea molarului afectat", 30, 100, "nu consumati alimente reci"),
+//                T2 = new Tratament("detartraj", 25, 95, "nu consumati alimente reci");
+        List<Tratament> tratamente = in.citesteCSV("data/tratamente.csv", "Tratament");
+        Tratament T1 = tratamente.get(0), T2 = tratamente.get(1), T3 = tratamente.get(2);
 
         //pacienti
-        Pacient P1 = new Pacient("Popa", "Alin", "123", D1, Di1, T2), P2 = new Pacient("Apostol", "Bianca", "222", D2, Di2, T1),
-                P3 = new Pacient("Parvu", "Marius", "333", D2, Di2, T1);
+//        Pacient P1 = new Pacient("Popa", "Alin", "123", D1, Di1, T2), P2 = new Pacient("Apostol", "Bianca", "222", D2, Di2, T1),
+//                P3 = new Pacient("Parvu", "Marius", "333", D2, Di2, T1);
+        List<Pacient> pacienti = in.citesteCSV("data/pacienti.csv", "Pacient");
+        Pacient P1 = pacienti.get(0), P2 = pacienti.get(1), P3 = pacienti.get(2), P4 = pacienti.get(3);
+        PService.adaugaDoctor(P1, D1);
+        PService.adaugaDiagnostic(P1, Di1);
+        PService.adaugaTratament(P1, T1);
+        PService.adaugaDoctor(P2, D2);
+        PService.adaugaDiagnostic(P2, Di2);
+        PService.adaugaTratament(P2, T1);
+        PService.adaugaDoctor(P3, D2);
+        PService.adaugaDiagnostic(P3, Di2);
+        PService.adaugaTratament(P3, T1);
 
         //adaug materiale pe stoc
         CService.adaugaMateriale(C, "sarma", 12);
@@ -111,5 +136,8 @@ public class Main {
         CService.modificaSalarius(C, D1, 1500);
         CService.afiseazaSalariu(C, D1);
 
+        Doctor DNou = new Doctor("Mugur","Dorian", "09090909");
+        WriteCSVService out = WriteCSVService.getInstance();
+        out.scrieCSV(DNou, "data/output.csv");
     }
 }

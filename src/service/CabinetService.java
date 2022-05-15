@@ -21,6 +21,7 @@ public class CabinetService implements ICabinetService {
         else if(persoana instanceof Asistent) {
             asistenti.add((Asistent) persoana);
         }
+        audit.scrieAudit("adaugaPersonal");
     }
 
     @Override
@@ -33,6 +34,7 @@ public class CabinetService implements ICabinetService {
         else if(persoana instanceof Asistent) {
             asistenti.remove((Asistent) persoana);
         }
+        audit.scrieAudit("stergePersonal");
     }
 
     @Override
@@ -41,6 +43,7 @@ public class CabinetService implements ICabinetService {
         for(Doctor d : doctori) {
             System.out.println(d);
         }
+        audit.scrieAudit("afiseazaDoctori");
     }
 
     @Override
@@ -49,12 +52,14 @@ public class CabinetService implements ICabinetService {
         for(Asistent a : asistenti) {
             System.out.println(a);
         }
+        audit.scrieAudit("afiseazaAsistenti");
     }
 
     @Override
     public void sorteazaNume(Cabinet cabinet) {
         List<Doctor> doctori = cabinet.getDoctori();
         doctori.sort(null);
+        audit.scrieAudit("sorteazaNume");
     }
 
     @Override
@@ -62,6 +67,7 @@ public class CabinetService implements ICabinetService {
         List<Doctor> doctori = cabinet.getDoctori();
         NrPacientiComparator comp = new NrPacientiComparator();
         doctori.sort(comp);
+        audit.scrieAudit("sorteazaNumarPacienti");
     }
 
     @Override
@@ -69,6 +75,7 @@ public class CabinetService implements ICabinetService {
         List<Doctor> doctori = cabinet.getDoctori();
         NotaComparator comp = new NotaComparator();
         doctori.sort(comp);
+        audit.scrieAudit("sorteazaNota");
     }
 
     @Override
@@ -79,6 +86,7 @@ public class CabinetService implements ICabinetService {
         else if(persoana instanceof Asistent) {
             ((Asistent) persoana).setSalariu(((Asistent) persoana).getSalariu() + diferenta);
         }
+        audit.scrieAudit("modificaSalariu");
     }
 
     @Override
@@ -91,6 +99,7 @@ public class CabinetService implements ICabinetService {
         else {
             stoc.put(material, cantitate);
         }
+        audit.scrieAudit("adaugaMateriale");
     }
 
     @Override
@@ -110,14 +119,14 @@ public class CabinetService implements ICabinetService {
         else {
             System.out.println("Nu exista acest material!");
         }
+        audit.scrieAudit("scadeMaterial");
     }
 
     @Override
     public void afiseazaStoc(Cabinet cabinet) {
         Map<String, Integer> stoc = cabinet.getStoc();
-        for(String material : stoc.keySet()) {
-            System.out.println(material + " -> " + stoc.get(material));
-        }
+        stoc.keySet().forEach((material) -> System.out.println(material + " -> " + stoc.get(material)));
+        audit.scrieAudit("afiseazaStoc");
     }
 
     @Override
@@ -127,6 +136,7 @@ public class CabinetService implements ICabinetService {
             System.out.println("Au mai ramas " + stoc.get(material) + "x " + material);
         else
             System.out.println("Cabinetul nu are acest material.");
+        audit.scrieAudit("afiseazaMaterial");
     }
 
     @Override
@@ -137,5 +147,6 @@ public class CabinetService implements ICabinetService {
         else if(persoana instanceof Asistent) {
             System.out.println("Asistentul " + persoana.getNumeComplet() + " castiga " + ((Asistent) persoana).getSalariu() + " de lei.");
         }
+        audit.scrieAudit("afiseazaSalariu");
     }
 }

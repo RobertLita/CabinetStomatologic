@@ -2,8 +2,10 @@ package service;
 
 import entitate.personal.Doctor;
 import entitate.personal.Pacient;
+import io.Audit;
 
 public interface IDoctorService {
+    Audit audit = Audit.getInstance();
     void afiseazaProgramare(Doctor doctor);
     void afiseazaProgramari(Doctor doctor);
     void eliminaProgramare(Doctor doctor);
