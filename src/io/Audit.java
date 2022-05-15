@@ -7,7 +7,7 @@ import java.util.Calendar;
 
 public class Audit {
     private static Audit instance;
-    Audit(){}
+    private Audit(){}
     public static Audit getInstance() {
         if(instance == null){
             instance = new Audit();

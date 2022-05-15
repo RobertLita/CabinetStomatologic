@@ -125,9 +125,7 @@ public class CabinetService implements ICabinetService {
     @Override
     public void afiseazaStoc(Cabinet cabinet) {
         Map<String, Integer> stoc = cabinet.getStoc();
-        for(String material : stoc.keySet()) {
-            System.out.println(material + " -> " + stoc.get(material));
-        }
+        stoc.keySet().forEach((material) -> System.out.println(material + " -> " + stoc.get(material)));
         audit.scrieAudit("afiseazaStoc");
     }
 
