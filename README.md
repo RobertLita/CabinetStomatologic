@@ -35,11 +35,11 @@ Acțiuni:
 Clase: persoana, doctor, asistent, cabinet, pacient, programare, diagnostic, tratament
 - ### Etapa 2 (3 mai)
 1. Extindeți proiectul din prima etapa prin realizarea persistentei utilizând fișiere.
-    - [ ] Se vor realiza fișiere de tip csv 1(comma separated values) pentru cel puțin 4 dintre clasele definite in prima etapa.
-    - [ ] Se vor realiza servicii singleton generice pentru scrierea și citirea din fișiere
-    - [ ] La pornirea programului se vor încărca datele din fișiere utilizând serviciile create
+    - [x] Se vor realiza fișiere de tip csv 1(comma separated values) pentru cel puțin 4 dintre clasele definite in prima etapa.
+    - [x] Se vor realiza servicii singleton generice pentru scrierea și citirea din fișiere
+    - [x] La pornirea programului se vor încărca datele din fișiere utilizând serviciile create
 2. Realizarea unui serviciu de audit
-    - [ ] se va realiza un serviciu care sa scrie într-un fișier de tip CSV de fiecare data când este executata una dintre acțiunile descrise in prima etapa. Structura fișierului: nume_actiune, timestamp
+    - [x] se va realiza un serviciu care sa scrie într-un fișier de tip CSV de fiecare data când este executata una dintre acțiunile descrise in prima etapa. Structura fișierului: nume_actiune, timestamp
 
 - ### Etapa 3 (31 mai)
     - [ ] Înlocuiți serviciile realizate în etapa a II-a cu servicii care sa asigure persistenta utilizând baza de date folosind JDBC.
