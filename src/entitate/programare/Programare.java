@@ -5,6 +5,7 @@ import java.util.Calendar;
 
 
 public class Programare implements Comparable<Programare>{
+    private int programare_id;
     private Calendar data;
     private String subiect;
     private Pacient pacient;
@@ -16,7 +17,16 @@ public class Programare implements Comparable<Programare>{
         this.subiect = subiect;
     }
     public void setData(int zi, int luna, int an, int ora, int minut) {
+        this.data = Calendar.getInstance();
         this.data.set(an, luna - 1, zi, ora, minut, 0);
+    }
+
+    public int getProgramare_id() {
+        return programare_id;
+    }
+
+    public void setProgramare_id(int programare_id) {
+        this.programare_id = programare_id;
     }
 
     public void setData(Calendar c) {
