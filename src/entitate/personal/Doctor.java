@@ -10,7 +10,7 @@ import java.util.Queue;
 
 public class Doctor extends Persoana{
     private double salariu, nota;
-    private int nrPacienti;
+    private int nrPacienti, doctor_id;
     private Asistent asistent;
     private Queue<Programare> programari;
 
@@ -18,6 +18,14 @@ public class Doctor extends Persoana{
     public Doctor(String nume, String prenume, String cnp) {
         super(nume, prenume, cnp);
         this.programari = new PriorityQueue<>();
+    }
+
+    public int getDoctor_id() {
+        return doctor_id;
+    }
+
+    public void setDoctor_id(int doctor_id) {
+        this.doctor_id = doctor_id;
     }
 
     public Asistent getAsistent() {
@@ -70,11 +78,11 @@ public class Doctor extends Persoana{
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Doctor doctor = (Doctor) o;
-        return Double.compare(doctor.salariu, salariu) == 0 && Double.compare(doctor.nota, nota) == 0 && nrPacienti == doctor.nrPacienti && asistent.equals(doctor.asistent) && programari.equals(doctor.programari);
+        return Double.compare(doctor.salariu, salariu) == 0 && Double.compare(doctor.nota, nota) == 0 && nrPacienti == doctor.nrPacienti && doctor_id == doctor.doctor_id && Objects.equals(asistent, doctor.asistent) && Objects.equals(programari, doctor.programari);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(salariu, nota, nrPacienti, asistent, programari);
+        return Objects.hash(salariu, nota, nrPacienti, doctor_id, asistent, programari);
     }
 }

@@ -3,10 +3,20 @@ package entitate.personal;
 import java.util.Objects;
 
 public class Asistent extends Persoana{
+    private static int id = 0;
     private double salariu;
-    public Asistent() {}
+    private int asistent_id;
+    public Asistent() {this.asistent_id = ++id;}
     public Asistent(String nume, String prenume, String cnp) {
-        super(nume, prenume, cnp);
+        super(nume, prenume, cnp); this.asistent_id = ++id;
+    }
+
+    public int getAsistent_id() {
+        return asistent_id;
+    }
+
+    public void setAsistent_id(int asistent_id) {
+        this.asistent_id = asistent_id;
     }
 
     public double getSalariu() {
@@ -27,11 +37,11 @@ public class Asistent extends Persoana{
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Asistent asistent = (Asistent) o;
-        return Double.compare(asistent.salariu, salariu) == 0;
+        return Double.compare(asistent.salariu, salariu) == 0 && asistent_id == asistent.asistent_id;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(salariu);
+        return Objects.hash(salariu, asistent_id);
     }
 }

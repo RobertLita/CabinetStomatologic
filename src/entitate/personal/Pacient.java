@@ -8,6 +8,7 @@ import java.util.Objects;
 
 
 public class Pacient extends Persoana{
+    private int pacient_id;
     private Diagnostic diagnostic;
     private Tratament tratament;
     private Programare programare;
@@ -67,6 +68,14 @@ public class Pacient extends Persoana{
         this.totalPlata = totalPlata;
     }
 
+    public int getPacient_id() {
+        return pacient_id;
+    }
+
+    public void setPacient_id(int pacient_id) {
+        this.pacient_id = pacient_id;
+    }
+
     @Override
     public String toString() {
         return "Pacientul " + this.getNumeComplet() + " a fost diagnosticat cu " + this.diagnostic + " si urmeaza tratamentul " + this.tratament;
@@ -77,11 +86,11 @@ public class Pacient extends Persoana{
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Pacient pacient = (Pacient) o;
-        return totalPlata == pacient.totalPlata && diagnostic.equals(pacient.diagnostic) && tratament.equals(pacient.tratament) && programare.equals(pacient.programare) && doctor.equals(pacient.doctor);
+        return pacient_id == pacient.pacient_id && totalPlata == pacient.totalPlata && Objects.equals(diagnostic, pacient.diagnostic) && Objects.equals(tratament, pacient.tratament) && Objects.equals(programare, pacient.programare) && Objects.equals(doctor, pacient.doctor);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(diagnostic, tratament, programare, doctor, totalPlata);
+        return Objects.hash(pacient_id, diagnostic, tratament, programare, doctor, totalPlata);
     }
 }
