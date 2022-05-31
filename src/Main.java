@@ -35,34 +35,19 @@ public class Main {
         Doctor D1 = doctori.get(0), D2 = doctori.get(1), D3 = doctori.get(2);
         DoctorDatabase DDB = new DoctorDatabase();
         DDB.createTable();
-//        DDB.create(D1);
-//        DDB.create(D2);
-//        DDB.create(D3);
-        //DDB.delete(2);
-        //DDB.read().forEach(System.out::println);
+
         D1 = DoctorDatabase.readAt(3);
         D2 = DoctorDatabase.readAt(5);
         D3 = DoctorDatabase.readAt(4);
-//        D1.setNrPacienti(100);
-//        DDB.update(D1);
 
         TratamentDatabase TDB = new TratamentDatabase();
         TDB.createTable();
 
         List<Tratament> tratamente = in.citesteCSV("data/tratamente.csv", "Tratament");
         Tratament T1 = tratamente.get(0), T2 = tratamente.get(1), T3 = tratamente.get(2);
-//        List<Programare> programari = in.citesteCSV("data/programari.csv", "Programare");
-//        Programare Pr1 = programari.get(0), Pr2 = programari.get(1), Pr3 = programari.get(2);
-//        TDB.create(T1);
-//        TDB.create(T2);
-//        TDB.delete(2);
-//        TDB.read().forEach(System.out::println);
         T1 = TratamentDatabase.readAt(3);
         T2 = TratamentDatabase.readAt(4);
-//        T1.setRecomandari("nicio recomandare");
-//        TDB.update(T1);
-//        TDB.create(T2);
-//        TDB.create(T3);
+
         List<Pacient> pacienti = in.citesteCSV("data/pacienti.csv", "Pacient");
         Pacient P1 = pacienti.get(0), P2 = pacienti.get(1), P3 = pacienti.get(2), P4 = pacienti.get(3);
         PService.adaugaDoctor(P1, D1);
@@ -75,13 +60,7 @@ public class Main {
         PService.adaugaDiagnostic(P3, Di2);
         PService.adaugaTratament(P3, T1);
         PacientDatabase PDB = new PacientDatabase();
-//        PDB.createTable();
-////        PDB.create(P2);
-////        PDB.create(P2);
-//        PDB.delete(1);
-//        PDB.delete(3);
-//        PDB.delete(4);
-//        PDB.delete(5);
+
         P2 = PacientDatabase.readAt(8);
         Programare Pr1 = new Programare(30, 5, 2022, 14, 5, P1, "extractie"),
                 Pr2 = new Programare(31, 5, 2022, 15, 40, P2, "detartraj");
@@ -98,14 +77,7 @@ public class Main {
 //        P2 = PacientDatabase.readAt(8);
 //        P2.setPrenume("Prenume");
 //        PDB.update(P2);
-//        //doctori
-//        //asistenti
-////        Asistent A1 = new Asistent("Toma", "Octavian", "0123"), A2 = new Asistent("Ionescu", "Maria", "111"),
-////                A3 = new Asistent("Grigore", "Laura", "02432123");
-//
-//        List<Asistent> asistenti = in.citesteCSV("data/asistenti.csv", "Asistent");
-//        Asistent A1 = asistenti.get(0), A2 = asistenti.get(1), A3 = asistenti.get(2);
-//
+
 //        //Cabinet
 //        Cabinet C = new Cabinet();
 //
@@ -122,24 +94,6 @@ public class Main {
 //        CService.adaugaPersonal(C, A1);
 //        CService.adaugaPersonal(C, A2);
 //        CService.adaugaPersonal(C, A3);
-//
-//
-//        //diagnostic
-////        Diagnostic Di1 = new Diagnostic("halitoza"), Di2 = new Diagnostic("carie");
-//        List<Diagnostic> diagnostice = in.citesteCSV("data/diagnostice.csv", "Diagnostic");
-//        Diagnostic Di1 = diagnostice.get(0), Di2 = diagnostice.get(1), Di3 = diagnostice.get(2);
-//
-//        //tratament
-//        Tratament T1 = new Tratament("plombarea molarului afectat", 30, 100, "nu consumati alimente reci"),
-//                T2 = new Tratament("detartraj", 25, 95, "nu consumati alimente reci");
-//        List<Tratament> tratamente = in.citesteCSV("data/tratamente.csv", "Tratament");
-//        Tratament T1 = tratamente.get(0), T2 = tratamente.get(1), T3 = tratamente.get(2);
-//
-//        //pacienti
-////        Pacient P1 = new Pacient("Popa", "Alin", "123", D1, Di1, T2), P2 = new Pacient("Apostol", "Bianca", "222", D2, Di2, T1),
-////                P3 = new Pacient("Parvu", "Marius", "333", D2, Di2, T1);
-//        List<Pacient> pacienti = in.citesteCSV("data/pacienti.csv", "Pacient");
-//        Pacient P1 = pacienti.get(0), P2 = pacienti.get(1), P3 = pacienti.get(2), P4 = pacienti.get(3);
 //
 //        //adaug materiale pe stoc
 //        CService.adaugaMateriale(C, "sarma", 12);
